@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-framework="javascript">
+	<head>
+		<meta charset="utf-8">
+		<title>TODO LIST</title>
+		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+	</head>
+	<body>
+		<h1 class="title">todos</h1>
+		<section class="todoapp">
+			<a href="#" class="select_all" >
+				<i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i>
+			</a>
+			
+			<header class="header">
+				
+				<input id="myInput" class="new-todo" placeholder="What needs to be done?" autofocus>
+			</header>
+			<section class="main">
+				<!-- <input id="toggle-all"  class="toggle-all" type="checkbox">
+				<label for="toggle-all">
+				</label> -->
+				<ul id="todo-list" class="todo-list">
+					<!-- <i class="fa fa-circle-o fa-2x" aria-hidden="true"></i> -->
+					<li class="list-elem checked "><i class="fa fa fa-square fa-fw"></i>Witcher 1</li>
+					<li class="list-elem">☐Berserk</li>
+					<li class="list-elem">☑BerserkBers</li>
+				</ul>
+			</section>
+			<footer class="footer">
+				<span class="todo-count"></span>
+				<ul class="filters">
+					<li>
+						<a href="#/" class="selected">All</a>
+					</li>
+					<li>
+						<a href="#/active">Active</a>
+					</li>
+					<li>
+						<a href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<button class="clear-completed">Clear completed</button>
+			</footer>
+        </section>
+        
+		<footer class="info">
+			
+			<p>Double-click to edit a todo.</p>
+			<p>Created by <a href="https://github.com/ovidex">Ovidiu Lipianu</a></p>
+		</footer>
+		<script src="index.js"></script>
+	</body>
+</html>
