@@ -24,7 +24,7 @@ button {
   body {
     font-size: 16px;
     font-family: "Arial Narrow", Arial, sans-serif;
-    min-width: 230px;
+    min-width: 300px;
 	max-width: 550px;
     margin: 0 auto;
     line-height: 1.2em;
@@ -93,7 +93,8 @@ button {
  
 .footer {
 	color: #777;
-	padding: 10px 120px;
+  padding: 10px 120px;
+  padding-left: 5px;
   height: 20px;
   position: relative;
   text-align: left;
@@ -109,21 +110,20 @@ button {
   color:  rgb(3, 3, 3);
   opacity: 0.3;
 position: relative;
-display: inline;
+display: inline-block;
 margin: 3px;
 padding: 2px;
 /* padding: 3px 7px; */
 border: 1px solid transparent;
 border-radius: 3px;
-line-height: 20px;
-bottom: 15px;
+bottom: 21.5px;
+
 } 
 
 .clear-completed{
 position: relative;
 float: right;
 left: 120px;
-line-height: 20px;
 color:  rgb(3, 3, 3);
   opacity: 0.3;
   background: 0;
@@ -169,10 +169,17 @@ color:  rgb(3, 3, 3);
   .close {
     /* color: transparent; */
     right: 0;
-    top: 0;
-    padding: 12px 16px 12px 16px;
+    
+    position:absolute;
+    padding: 0px 16px 0px 0px;
   }
   .close:hover {
-    background-color: #f44336;
-    color: white;
+    color:red;
+  }
+  .todo-count{
+    color: black;
+    opacity: 0.3;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 20px;
   }

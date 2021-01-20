@@ -1,3 +1,9 @@
+
+document.getElementsByClassName("todo-count")[0].innerHTML=
+document.getElementsByClassName("list-elem").length -
+document.getElementsByClassName("checked").length
++ " items left";
+
 var myNodelist = document.getElementsByClassName("list-elem");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -14,10 +20,27 @@ var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+    document.getElementById("todo-list").removeChild(this.parentElement);
+    // var div = this.parentElement;
+    // div.style.display = "none";
   }
 }
+
+
+
+// filters display:none / display:block
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.classList.contains("active")) {
+    ev.target.classList.toggle('checked');
+  }
+
+  document.getElementsByClassName("todo-count")[0].innerHTML=
+document.getElementsByClassName("list-elem").length -
+document.getElementsByClassName("checked").length
++ " items left";
+}, false);
+
 
 
 // Add a "checked" symbol when clicking on a list item
@@ -26,7 +49,39 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
+  document.getElementsByClassName("todo-count")[0].innerHTML=
+document.getElementsByClassName("list-elem").length -
+document.getElementsByClassName("checked").length
++ " items left";
 }, false);
+
+// The select all / deselect all button 
+document.addEventListener('click', function(ev) {
+  if (ev.target.classList.contains("fa-chevron-down")){
+    var listCheck = document.getElementsByClassName("list-elem");
+    var s = 0;
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked'))
+      s = s+1;
+    }
+    
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked') && s==listCheck.length )
+      {listCheck[i].classList.toggle('checked');}
+      else{
+        if(!listCheck[i].classList.contains('checked') && s!=listCheck.length ){
+          listCheck[i].classList.toggle('checked');
+        }
+      }
+    }
+    document.getElementsByClassName("todo-count")[0].innerHTML=
+document.getElementsByClassName("list-elem").length -
+document.getElementsByClassName("checked").length
++ " items left";
+  }
+}, false);
+
+
 
 var input=document.getElementById("myInput");
 document.addEventListener('keydown', function(e) {
@@ -50,10 +105,14 @@ document.addEventListener('keydown', function(e) {
     
       for (i = 0; i < close.length; i++) {
         close[i].onclick = function() {
-          var div = this.parentElement;
-          div.style.display = "none";
+          document.getElementById("todo-list").removeChild(this.parentElement);
+          // var div = this.parentElement;
+          // div.style.display = "none";
         }
       }
-
+      document.getElementsByClassName("todo-count")[0].innerHTML=
+document.getElementsByClassName("list-elem").length -
+document.getElementsByClassName("checked").length
++ " items left";
      }
 }, false);
