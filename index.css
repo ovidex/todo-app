@@ -176,10 +176,21 @@ color:  rgb(3, 3, 3);
   .close:hover {
     color:red;
   }
+  .clear-completed:hover{
+    color:black;
+    text-decoration-line: underline;
+  }
   .todo-count{
     color: black;
     opacity: 0.3;
     text-align: center;
     padding-left: 0;
     padding-right: 20px;
+  }
+  .filters li a:hover {
+    border-color:red;
+  }
+  
+  .filters li a.selected {
+    border-color: rgba(175, 47, 47, 0.2);
   }
