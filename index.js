@@ -30,9 +30,40 @@ for (i = 0; i < close.length; i++) {
 
 // filters display:none / display:block
 var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
+document.addEventListener('click', function(ev) {
   if (ev.target.classList.contains("active")) {
-    ev.target.classList.toggle('checked');
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked'))
+      listCheck[i].style.display='none';
+      else
+      listCheck[i].style.display='block';
+    }
+  }
+  if (ev.target.classList.contains("completed")) {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(!listCheck[i].classList.contains('checked'))
+      listCheck[i].style.display='none';
+      else
+      listCheck[i].style.display='block';
+    }
+  }
+  if (ev.target.classList.contains("selected")) {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      listCheck[i].style.display='block';
+    }
+  }
+  if (ev.target.classList.contains("clear-completed")) {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked'))
+      {
+        document.getElementById("todo-list").removeChild(listCheck[i]);
+        i=i-1;
+      }
+    }
   }
 
   document.getElementsByClassName("todo-count")[0].innerHTML=
