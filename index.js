@@ -86,7 +86,7 @@ document.getElementsByClassName("checked").length
 + " items left";
 }, false);
 
-// The select all / deselect all button 
+// The select all / deselect all button
 document.addEventListener('click', function(ev) {
   if (ev.target.classList.contains("fa-chevron-down")){
     var listCheck = document.getElementsByClassName("list-elem");
@@ -95,7 +95,7 @@ document.addEventListener('click', function(ev) {
       if(listCheck[i].classList.contains('checked'))
       s = s+1;
     }
-    
+
     for (var i = 0; i < listCheck.length; i++){
       if(listCheck[i].classList.contains('checked') && s==listCheck.length )
       {listCheck[i].classList.toggle('checked');}
@@ -133,7 +133,7 @@ document.addEventListener('keydown', function(e) {
       span.className = "close";
       span.appendChild(txt);
       li.appendChild(span);
-    
+
       for (i = 0; i < close.length; i++) {
         close[i].onclick = function() {
           document.getElementById("todo-list").removeChild(this.parentElement);
