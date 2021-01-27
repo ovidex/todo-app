@@ -90,8 +90,11 @@ button {
   .todo-count strong {
     font-weight: 300;
   }
-
+.hide{
+  display: none;
+}
 .footer {
+  
 	color: #777;
   padding: 10px 120px;
   padding-left: 5px;
@@ -114,12 +117,14 @@ display: inline-block;
 margin: 3px;
 padding: 2px;
 /* padding: 3px 7px; */
-border: 1px solid transparent;
+/* border: 1px solid transparent; */
 border-radius: 3px;
 bottom: 21.5px;
 
 }
-
+.borderclr{
+  border:3px solid red;
+}
 .clear-completed{
 position: relative;
 float: right;

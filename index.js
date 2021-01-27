@@ -21,17 +21,27 @@ var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     document.getElementById("todo-list").removeChild(this.parentElement);
-    // var div = this.parentElement;
-    // div.style.display = "none";
+  // if(document.getElementsByClassName("list-elem").length -
+  // document.getElementsByClassName("checked").length==0)
+  //   {console.log('footer');
+  //     document.getElementsByClassName('footer')[0].style.display='none';
+  //   }
+  //   else{
+  //     document.getElementsByClassName('footer')[0].style.display='flex';
+  //   }
   }
+  
 }
 
 
 
-// filters display:none / display:block
-var list = document.querySelector('ul');
+// filters 
+
 document.addEventListener('click', function(ev) {
   if (ev.target.classList.contains("active")) {
+    document.getElementsByClassName('act')[0].classList.add('borderclr');
+    document.getElementsByClassName('sel')[0].classList.remove('borderclr');
+    document.getElementsByClassName('compl')[0].classList.remove('borderclr');
     var listCheck = document.getElementsByClassName("list-elem");
     for (var i = 0; i < listCheck.length; i++){
       if(listCheck[i].classList.contains('checked'))
@@ -41,6 +51,9 @@ document.addEventListener('click', function(ev) {
     }
   }
   if (ev.target.classList.contains("completed")) {
+    document.getElementsByClassName('compl')[0].classList.add('borderclr');
+    document.getElementsByClassName('act')[0].classList.remove('borderclr');
+    document.getElementsByClassName('sel')[0].classList.remove('borderclr');
     var listCheck = document.getElementsByClassName("list-elem");
     for (var i = 0; i < listCheck.length; i++){
       if(!listCheck[i].classList.contains('checked'))
@@ -50,6 +63,9 @@ document.addEventListener('click', function(ev) {
     }
   }
   if (ev.target.classList.contains("selected")) {
+    document.getElementsByClassName('sel')[0].classList.add('borderclr');
+    document.getElementsByClassName('act')[0].classList.remove('borderclr');
+    document.getElementsByClassName('compl')[0].classList.remove('borderclr');
     var listCheck = document.getElementsByClassName("list-elem");
     for (var i = 0; i < listCheck.length; i++){
       listCheck[i].style.display='block';
@@ -62,10 +78,17 @@ document.addEventListener('click', function(ev) {
       {
         document.getElementById("todo-list").removeChild(listCheck[i]);
         i=i-1;
+      
       }
     }
   }
-
+  if(document.getElementsByClassName("list-elem").length==0)
+      {console.log('footer');
+        document.getElementsByClassName('footer')[0].style.display='none';
+      }
+      else{
+        document.getElementsByClassName('footer')[0].style.display='flex';
+      }
   document.getElementsByClassName("todo-count")[0].innerHTML=
 document.getElementsByClassName("list-elem").length -
 document.getElementsByClassName("checked").length
@@ -80,6 +103,51 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
+  
+  if (window.location.href.includes('active')) {
+
+    document.getElementsByClassName('act').classList.toggle('borderclr');
+
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked'))
+      listCheck[i].style.display='none';
+      else
+      listCheck[i].style.display='block';
+    }
+  }
+  else
+  if (window.location.href.includes('completed')) {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(!listCheck[i].classList.contains('checked'))
+      listCheck[i].style.display='none';
+      else
+      listCheck[i].style.display='block';
+    }
+  }
+  else
+   {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      listCheck[i].style.display='block';
+    }
+  }
+  if (ev.target.classList.contains("clear-completed")) {
+    var listCheck = document.getElementsByClassName("list-elem");
+    for (var i = 0; i < listCheck.length; i++){
+      if(listCheck[i].classList.contains('checked'))
+      {
+        document.getElementById("todo-list").removeChild(listCheck[i]);
+        i=i-1;
+        
+      }
+     
+    }
+    
+  }
+
+
   document.getElementsByClassName("todo-count")[0].innerHTML=
 document.getElementsByClassName("list-elem").length -
 document.getElementsByClassName("checked").length
@@ -109,6 +177,7 @@ document.addEventListener('click', function(ev) {
 document.getElementsByClassName("list-elem").length -
 document.getElementsByClassName("checked").length
 + " items left";
+
   }
 }, false);
 
@@ -117,6 +186,7 @@ document.getElementsByClassName("checked").length
 var input=document.getElementById("myInput");
 document.addEventListener('keydown', function(e) {
     // console.log(e.key);
+    
     if (e.key === 'Enter') {
     var li = document.createElement("li");
     var inputValue = document.getElementById("myInput").value;
@@ -126,6 +196,7 @@ document.addEventListener('keydown', function(e) {
     if (inputValue === '') {
       } else {
         document.getElementById("todo-list").appendChild(li);
+        document.getElementsByClassName('footer')[0].style.display='flex';
       }
       document.getElementById("myInput").value = "";
       var span = document.createElement("SPAN");
@@ -137,13 +208,19 @@ document.addEventListener('keydown', function(e) {
       for (i = 0; i < close.length; i++) {
         close[i].onclick = function() {
           document.getElementById("todo-list").removeChild(this.parentElement);
-          // var div = this.parentElement;
-          // div.style.display = "none";
         }
       }
+
       document.getElementsByClassName("todo-count")[0].innerHTML=
 document.getElementsByClassName("list-elem").length -
 document.getElementsByClassName("checked").length
 + " items left";
+
      }
 }, false);
+
+
+// if(document.getElementsByClassName("todo-count")[0].innerHTML=='0 items left')
+//   {console.log('footer');
+//     document.getElementsByClassName('footer')[0].style.display='none';
+//   }
